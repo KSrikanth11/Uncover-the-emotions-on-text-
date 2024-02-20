@@ -1,4 +1,6 @@
 -----------Uncover The Emotions in Text------------
+
+
 Uncover the emotions in text code that tells us the sentiment or emotion of a sentence based on a dictionary of words which tag words as negative and positive and give them a score from -10 to 10
 
 Resources Used:
