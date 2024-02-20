@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map;
 import java.util.Scanner;
 
-public class SentimentAnalysis {
+public class UncoverEmotions {
 	
 	
 
@@ -23,20 +23,20 @@ public static void main(String args[]) throws IOException
 		String tweet;
 	
 		  ArrayList<String> stopwords= new ArrayList<String>();
-		  BufferedReader stop = new BufferedReader(new FileReader("Data\\stopwords.txt"));
-		  String line = "";
-		  while ((line = stop.readLine()) != null)
+		  BufferedReader stop = new BufferedReader(new FileReader("stopwords.txt"));
+		  String sentence = "";
+		  while ((sentence = stop.readLine()) != null)
 		  {
-			  stopwords.add(line);
+			  stopwords.add(sentence);
 		  }
 		
 		
 		 Map<String, String> map = new HashMap<String, String>();
-	        BufferedReader in = new BufferedReader(new FileReader("Data\\AFINN"));
+	        BufferedReader in = new BufferedReader(new FileReader("AFINN"));
 	        
-	        line="";
-	        while ((line = in.readLine()) != null) {
-	            String parts[] = line.split("\t");
+	        sentence="";
+	        while ((sentence = in.readLine()) != null) {
+	            String parts[] = sentence.split("\t");
 	            map.put(parts[0], parts[1]);
 	            count++;
 	        }
@@ -48,7 +48,7 @@ public static void main(String args[]) throws IOException
 		Scanner inputStream= new Scanner(new FileReader("C:\\Users\\SRIKANTH\\Sentiment-Analysis-in-Java\\Data\\TestTweets.csvs"));
 		while(inputStream.hasNextLine())
 		{
-			float tweetscore=0;
+		float tweetscore=0;
 		tweet= inputStream.nextLine();
 		String[] word=tweet.split(" ");
 		
@@ -58,7 +58,7 @@ public static void main(String args[]) throws IOException
 			{
 				if(stopwords.contains(word[i].toLowerCase()))
 				{
-					
+					stopwords.remove(word[i]);
 				}
 				else{
 				if(map.get(word[i])!=null)
